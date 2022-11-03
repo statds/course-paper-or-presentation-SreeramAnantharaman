@@ -1,0 +1,185 @@
+---
+title: "Modeling Wave Height Durations"
+author: "Sreeram Anantharaman"
+date: '2022-11-03'
+output: beamer_presentation
+---
+
+## Introduction
+
+The Engle and Russell [1998] paper introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. Log-ACD model introduced by Luc Bauwens, Pierre Giot [2000] is the logarithmic version of the ACD model that allows to introduce additional variables without sign restrictions on their coefficients.\
+\
+
+The ACD models are used for the analysis of data which arrive at irregular intervals. The model treats the time between events as a stochastic process and proposes a new class of point processes with dependent arrival rates.\
+
+## (Cont..) 
+
+This project discuss about modeling a LogACD model using exogenous variables. Generally the duration models are used for fitting Stock datasets but here it is used to model wave heights. The durations of wave heights are modeled as a function of several exogenous variables.\
+\
+
+## Motivation
+
+With an increase in data availability and computing power the amount of high frequency data have been increasing really fast. And in order to tackle these types of datasets new techniques has to be introduced and one such techniques is duration modeling. The main motivation behind the introduction of this model was to handle transaction level data. So in order to understand the market structures better it was useful to study the durations of transactions.\ 
+
+\
+Also these types of data occur in irregular time instances. So the arrival time of these transactions are considered as random variables which follow a point process. The main goal of this model is to understand and forecast the intervals of transaction arrivals.\ 
+
+## ACD Model
+
+The Autoregressive Conditional Duration model or ACD models are defined in terms of conditional density of durations. The duration is defined as $x_i = t_i - t_{i-1}$. That is, the durations $x_i$ represents the interval between two time points of the event occurring. Let $\psi_i$ be the expectation of the ith duration then we have,
+
+$E(x_i | x_{i-1}, ..., x_1) = \psi_i$ 
+
+Then we define the durations $x_i$ as:
+
+$x_i = \psi_i \epsilon_i$
+
+where $\epsilon_i ~$ i.i.d with some density. And 
+
+$\psi_i = \omega + \sum_{j=0}^m \alpha_j x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
+
+With the following constraints on the coefficients: $\omega > 0$, $\beta \geq 0$, $\alpha \geq 0$ and $\alpha + \beta < 1$.
+
+This is called an ACD(m, q) where the m and q refer to the orders of the 
+lags.
+
+## Log-ACD Model
+
+In the logarithmic ACD model or log-ACD model the autoregressive equation is defined as the logarithm of the conditional expectation of the durations. This model relaxes the non-negativity constraint imposed by the ACD model and thus its more flexible than the ACD model. 
+
+Let $\psi_i$ be the logarithm of the conditional expectation of the ith duration then we have,
+
+$ln E(x_i | x_{i-1}, ..., x_1) = \psi_i$ 
+
+Then we define the durations $x_i$ as:
+
+$x_i = e^{\psi_i} \epsilon_i$
+
+where $\epsilon_i ~$ i.i.d with some density. And 
+
+$\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
+
+With the following constraints: $|\alpha + \beta| < 1$.
+
+This is called an Log-ACD(m, q) where the m and q refer to the orders of the 
+lags. 
+
+## Data Description
+
+This data can be obtained from two main portals: the National Oceanic and Atmospheric Administration (NOAA) and the United States Army Corps of Engineers (USACE) databases. Buoy fleets are independently owned and operated by universities, private research institutes, and government agencies. The data is from NOAA buoy 44039 in the Central Long Island Sound. 
+
+The dataset contains the following variables: Year, Month, Day, Hour, Wave height, Wind speed, Fetch, Wind speed square, Z2, Z3 and Z4. The variables Z2, Z3 and Z4 are computed as follows:
+
+$Z_{2,t-r} = Speed_{t-r} \sqrt{Fetch_{t-r}}$
+
+$Z_{3,t-r} = Fetch_{t-r}$
+
+$Z_{4,t-r} = \frac{Fetch_{t-r}^{3/2}}{Speed_{t-r}}$
+
+## Data Preparation
+
+So the data is available for each hour from the 11-01-2004 to 10-31-2013. Another important thing to note is each year can be divided into two periods: (i) Windy Months (Nov-Mar) (ii) Calm Months (Apr-Oct). So modeling can also be done in two ways: (i) Consider entire day as a single time series and build the model (ii) Consider yearly data for Calm/Windy period and build models for each period/year.
+
+The durations are calculated based on some threshold for the Wave heights and they are calculated in hours. So we can do this based on 3 different thresholds: 2ft, 3ft and 4ft. That is the durations are calculated as the difference in the time for a wave to reach a threshold. 
+
+## Plots of Durations
+
+Now let us look at three plots of durations for three different thresholds. 
+
+1) Duration plot for the entire data based on 2ft threshold:
+
+## Plot for 3ft 
+
+2) Duration plot for the entire data based on 3ft threshold:
+
+## Plot for 4ft 
+
+3) Duration plot for the entire data based on 4ft threshold:
+
+From the plots we can see that the pattern of the plot looks similar and the only difference is the duration length.
+
+## Plots based on Calm Season
+
+Now let us look at two plots of durations for the two different periods at 2ft threshold.
+
+1) Duration plot for calm period based on 2ft threshold for the year 2008:
+
+## Plots based on Windy Season
+
+2) Duration plot for Windy period based on 2ft threshold for the year 2008:
+
+We can clearly see more activity in the windy period than in the calm period.
+
+## Log-ACD Model with exogenous variables
+
+We define the durations $x_i$ with exogenous variables as:
+
+$x_i = e^{\psi_i} \epsilon_i$
+
+where $\epsilon_i ~$ i.i.d with some density. 
+
+and 
+
+$\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{i,j}$
+
+Where $z_{i,j}$ are the exogenous variables. The exogenous variables used for modeling are Wind speed square, z2, z3, z4 and their lags. The lags were manually computed for each variables. And the missing data in the exogenous variables were backfilled. 
+
+## Procedure
+
+Steps involved in the modeling and prediction:
+
+(i) The first step was to identify the initial parameter values. 
+
+(ii) The second step is to fit the model with the exogenous variables. The parameter are estimated using conditional likelihood approach.
+
+(iii) The third step is to do a simulation study to see if we get the true parameters.
+
+(iv) The final step is prediction.
+
+## Outputs
+
+All outputs are based on the durations computed for windy period for the year 2010 with a threshold of 2ft. Also the results are based on the six lags of wind speed square as exogenous variables. The simulation results are based on average of 10 simulations.
+
+The results for Log-ACD(2,1) are as follows:
+
+\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ Parameters& Initial & Fitted & Simulations \\
+ \hline
+ Omega   & 0.01 & 0.21  & 0.24 \\
+  \hline
+ Alpha1   & 0.05 & -0.02  & -0.03 \\
+  \hline
+ Alpha2   & -0.01 & 0.09  & 0.10 \\
+  \hline
+ Beta   & 0.95 & 0.85  & 0.84 \\
+  \hline
+ Delta   & 0 & 0  & 0 \\
+  \hline
+\end{tabular}
+
+The delta row in the table represents all 6 lags of the wind speed square variable. They aren't exactly 0's but having considered only two decimal points for other parameters and these coefficients have values beyond two decimal points i have kept them as 0.
+
+Also the MAPE for 5-step ahead forecast was 23.33.
+
+## Concluding remarks
+
+From the results we can see that the model fits very well with several exogenous variables as the simulated parameter values are close to the fitted parameter values and also the MAPE for 5-step ahead forecast was 23.33 which is not very bad. This model can be fit for any order of alpha and beta. Also it can be used to fit any number of exogenous variables.
+
+## References
+
+Aerambamoorthy Thavaneswaran, Nalini Ravishanker, You Liang. Generalized duration models and optimal estimation using estimating functions. The Institute of Statistical Mathematics, Tokyo 2013
+
+Yaohua Zhang, Jian Zou, Nalini Ravishanker, Aerambamoorthy Thavaneswaran. Modeling financial durations using penalized estimating functions. Computational Statistics and Data Analysis, Volume 131, March 2019
+
+Luc Bauwens, Pierre Giot. The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.ANNALES Dâ CONOMIE ET DE STATISTIQUE. â NÂ° 60 2000
+
+Robert F. Engle and Jeffrey R. Russell. "Autoregressive Conditional Duration: A New Model For Irregularly Spaced Transaction Data." Econometrica, Vol. 66, No. 5 (September, 1998), 1127-1162
+
+## (Cont..)
+
+R. Tsay. "Autoregressive Conditional Duration Models."  chapter I, Handbook in Econometrics II, Palgrave Publishing Company, 2007.
+
+Ellis Shaffer. "Temporal Modeling Frameworks for Coastal Wave Heights."
+
+Lilian Cheung. "High Frequency Data: Modeling Durations via the ACD and Log ACD Models."
