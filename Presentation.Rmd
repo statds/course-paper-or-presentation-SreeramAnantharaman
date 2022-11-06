@@ -1,5 +1,5 @@
 ---
-title: "Review of Duration Models"
+title: "Introduction to Duration Models"
 author: "Sreeram Anantharaman"
 date: '2022-11-03'
 output: beamer_presentation
@@ -12,7 +12,7 @@ The Engle and Russell [1998] paper introduced the ACD model, which presents a ne
 
 The ACD models are used for the analysis of data which arrive at irregular intervals. The model treats the time between events as a stochastic process and proposes a new class of point processes with dependent arrival rates.\
 
-## (Cont..) 
+## Introduction (Cont..) 
 
 This project discuss about modeling a LogACD model using exogenous variables. Generally the duration models are used for fitting Stock datasets but here it is used to model wave heights. The durations of wave heights are modeled as a function of several exogenous variables.\
 \
@@ -23,6 +23,14 @@ With an increase in data availability and computing power the amount of high fre
 
 \
 Also these types of data occur in irregular time instances. So the arrival time of these transactions are considered as random variables which follow a point process. The main goal of this model is to understand and forecast the intervals of transaction arrivals.\ 
+
+## Background
+
+The Autoregressive conditional Heteroskedasticity (ARCH) and Generalized Autoregressive conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
+
+In a linear regression the variances of the error terms are assumed to be constant throughout the data. if this is not satisfied then we say the data is affected by Heteroskedasticity. In that case linear model may not provide precise conclusions. This situation is tacked by the ARCH/GARCH framework which models these variances. 
+
+
 
 ## ACD Model
 
