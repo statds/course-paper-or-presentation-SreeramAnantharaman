@@ -19,24 +19,37 @@ The model treats the time between events as a stochastic process and proposes a 
 
 In this presentation several simulation studies are shown for different types of Log-ACD models.
 
-Also we have shown a short example where we have tried to fit an Log-ACD model for wave height duration. 
+Also we have shown an example where we fit an Log-ACD model for wave height duration. 
 
-This is a very unusual example for duration models as its mainly used for financial application. 
+This is a very different example of the application of duration models as its mainly used for modeling financial application. 
 
 Here we have modeled wave height duration as a function of four different exogenous variables. 
 
 ## Motivation
 
-With an increase in data availability and computing power the amount of high frequency data have been increasing really fast. And in order to tackle these types of datasets new techniques has to be introduced and one such techniques is duration modeling. The main motivation behind the introduction of this model was to handle transaction level data. So in order to understand the market structures better it was useful to study the durations of transactions.\ 
+With an increase in data availability and computing power the amount of high frequency data have been increasing really fast. 
 
-\
-Also these types of data occur in irregular time instances. So the arrival time of these transactions are considered as random variables which follow a point process. The main goal of this model is to understand and forecast the intervals of transaction arrivals.\ 
+One way to analyze such datasets is using duration modeling. 
+
+The main motivation behind the introduction of this model was to understand the market structures better using the durations of transactions.
+
+Also these types of data occur in irregular time instances. 
+
+So the arrival time of these transactions are considered as random variables which follow a point process. 
+
+The main goal of this model is to understand and forecast the intervals of transaction arrivals.
 
 ## Background
 
 The Autoregressive conditional Heteroskedasticity (ARCH) and Generalized Autoregressive conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
 
-In a linear regression the variances of the error terms are assumed to be constant throughout the data. if this is not satisfied then we say the data is affected by Heteroskedasticity. In that case linear model may not provide precise conclusions. This situation is tackled by the ARCH/GARCH framework which models these variances.
+In a linear regression the variances of the error terms are assumed to be constant throughout the data. 
+
+If this is not satisfied then we say the data is affected by Heteroskedasticity. 
+
+In that case linear model may not provide precise conclusions. 
+
+This situation is tackled by the ARCH/GARCH framework which models these variances.
 
 ## ARCH
 
@@ -72,9 +85,13 @@ It gives parsimonious models which are easy to estimate and has proven successfu
 
 ## Relationship between GARCH and ACD
 
-Several models have been developed from the ARCH/GARCH models. One such model is the Autoregressive Conditional Duration (ACD) model. 
+Several models have been developed from the ARCH/GARCH models. 
 
-Especially the ACD model is considered as an counterpart of the GARCH model. The ACD model is used to analyze the financial durations rather than the returns. 
+One such model is the Autoregressive Conditional Duration (ACD) model. 
+
+Especially the ACD model is considered as an counterpart of the GARCH model. 
+
+The ACD model is used to analyze the financial durations rather than the returns. 
 
 That is instead of Modeling the conditional variances we model the conditional mean of the durations.
 
@@ -228,11 +245,19 @@ Sometimes it is not possible to assume a distribution for the errors in practice
 
 This is done by deriving optimal combined estimating equations based on both linear and generalized martingale differences, and by proposing recursive estimating equations based on the combined estimating equations.
 
+## Data Source
+
+This data can be obtained from two main portals: the National Oceanic and Atmospheric Administration (NOAA) and the United States Army Corps of Engineers (USACE) databases. 
+
+Buoy fleets are independently owned and operated by universities, private research institutes, and government agencies. 
+
+The data is from NOAA buoy 44039 in the Central Long Island Sound. 
+
 ## Data Description
 
-This data can be obtained from two main portals: the National Oceanic and Atmospheric Administration (NOAA) and the United States Army Corps of Engineers (USACE) databases. Buoy fleets are independently owned and operated by universities, private research institutes, and government agencies. The data is from NOAA buoy 44039 in the Central Long Island Sound. 
+The dataset contains the following variables: Year, Month, Day, Hour, Wave height, Wind speed, Fetch, Wind speed square, Z2, Z3 and Z4. 
 
-The dataset contains the following variables: Year, Month, Day, Hour, Wave height, Wind speed, Fetch, Wind speed square, Z2, Z3 and Z4. The variables Z2, Z3 and Z4 are computed as follows:
+The variables Z2, Z3 and Z4 are computed as follows:
 
 $Z_{2,t-r} = Speed_{t-r} \sqrt{Fetch_{t-r}}$
 
@@ -242,7 +267,15 @@ $Z_{4,t-r} = \frac{Fetch_{t-r}^{3/2}}{Speed_{t-r}}$
 
 ## Data Preparation
 
-So the data is available for each hour from the 11-01-2004 to 10-31-2013. Another important thing to note is each year can be divided into two periods: (i) Windy Months (Nov-Mar) (ii) Calm Months (Apr-Oct). So modeling can also be done in two ways: (i) Consider entire day as a single time series and build the model (ii) Consider yearly data for Calm/Windy period and build models for each period/year.
+So the data is available for each hour from the 11-01-2004 to 10-31-2013. 
+
+Another important thing to note is each year can be divided into two periods: (i) Windy Months (Nov-Mar) (ii) Calm Months (Apr-Oct). 
+
+So modeling can also be done in two ways: 
+
+(i) Consider entire day as a single time series and build the model or
+
+(ii) Consider yearly data for Calm/Windy period and build models for each period/year.
 
 The durations are calculated based on some threshold for the Wave heights and they are calculated in hours. So we can do this based on 3 different thresholds: 2ft, 3ft and 4ft. That is the durations are calculated as the difference in the time for a wave to reach a threshold. 
 
@@ -300,7 +333,11 @@ and
 
 $\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{i,j}$
 
-Where $z_{i,j}$ are the exogenous variables. The exogenous variables used for modeling are Wind speed square, z2, z3, z4 and their lags. The lags were manually computed for each variables. And the missing data in the exogenous variables were backfilled. 
+Where $z_{i,j}$ are the exogenous variables. 
+
+The exogenous variables used for modeling are Wind speed square, z2, z3, z4. 
+
+And the missing data in the exogenous variables were backfilled. 
 
 ## Procedure
 
@@ -328,23 +365,21 @@ Then compute the MAE for the forecasts.
 
 ## Simulation Study 1
 
-Several simulation studys were conducted to see if the model was able to return fitted values close to the values used to simulate the datasets. All simulations are based on exponential distributions for the errors. 
+Several simulation studies were conducted to see if the model was able to return fitted values close to the values used to simulate the datasets. All simulations are based on exponential distributions for the errors. 
 
 The results for Log-ACD(2,1) are as follows:
 
 \begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
  \hline
- Parameters& Simulated & Initial & Fitted \\
+ Parameters& Simulated & Fitted \\
  \hline
- Omega   & 0.24 & 0.01 & 0.21 \\
+ Omega   & 0.30 & 0.33 \\
   \hline
- Alpha1   & -0.03 & 0.05 & -0.02 \\
+ Alpha1   & 0.20 & 0.17 \\
   \hline
- Alpha2   & 0.10 & -0.01 & 0.09 \\
+ Beta   & 0.70 & 0.65 \\
   \hline
- Beta   & 0.84 & 0.95 & 0.85 \\
-  \hline
- Delta   & 0 & 0  & 0 \\
+ Delta  & 0  & 0 \\
   \hline
 \end{tabular}
 
@@ -408,9 +443,31 @@ The results for Log-ACD(5,3) are as follows:
 
 The simulation results are based on average of 100 simulations of size 1500.
 
-## Model fits and prediction
+## Model fits
 
-All outputs are based on the durations computed for windy period for the year 2010 with a threshold of 2ft. Also the results are based on the four exogenous variables: wind speed square, z2, z3 and z4. 
+All outputs are based on the durations computed for windy period for the year 2010 with a threshold of 2ft. 
+
+The results for Log-ACD(2,1) are as follows:
+
+\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ Parameters & Initial & Fitted \\
+ \hline
+ Omega   & 0.01 & 0.21 \\
+  \hline
+ Alpha1    & 0.05 & -0.02 \\
+  \hline
+ Alpha2   & -0.01 & 0.09 \\
+  \hline
+ Beta    & 0.95 & 0.85 \\
+  \hline
+ Delta   & 0  & 0 \\
+  \hline
+\end{tabular}
+
+## Model fits (Cont..)
+
+This table shows the reuslts based on the model using the four exogenous variables: wind speed square, z2, z3 and z4. 
 
 The results for Log-ACD(2,1) are as follows:
 
@@ -436,7 +493,17 @@ The results for Log-ACD(2,1) are as follows:
   \hline
 \end{tabular}
 
-Also the MAPE for 5-step ahead forecast was 23.33.
+## Forecast evaluation
+
+The MAPE for 5-step ahead forecast for the model without exogenous variables was 23.33.
+
+The MAPE for 5-step ahead forecast for the model with exogenous variables was 81.03.
+
+We can see that the model without the exogenous variables have a lower MAPE compared to the model with the exogenous variables. 
+
+This may be because of the nature of exogenous variables. 
+
+We can see that the model is able to fit the durations well even for applications outside of financial domain.
 
 ## Summary
 
