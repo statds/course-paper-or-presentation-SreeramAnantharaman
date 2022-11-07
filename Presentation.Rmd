@@ -7,9 +7,9 @@ output: beamer_presentation
 
 ## Introduction
 
-The Engle and Russell [1998] paper introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. 
+The Engle and Russell \cite{ACD} paper introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. 
 
-Log-ACD model introduced by Luc Bauwens, Pierre Giot [2000] is the logarithmic version of the ACD model that allows to introduce additional variables without sign restrictions on their coefficients.
+Log-ACD model introduced by Luc Bauwens, Pierre Giot \cite{LogACD} is the logarithmic version of the ACD model that allows to introduce additional variables without sign restrictions on their coefficients.
 
 The ACD models are used for the analysis of data which arrive at irregular intervals. 
 
@@ -224,7 +224,7 @@ $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$\
 
 ## Other ways to estimate the parameters
 
-Sometimes it is not possible to assume a distribution for the errors in practice. In order to accommodate for that alternate distribution free approaches were introduced. One such approach is based on the martingale estimation functions which does not have any distributional assumption. It is similar to the generalized method of moments as it only requires the first four conditional moments of the durations. 
+Sometimes it is not possible to assume a distribution for the errors in practice. In order to accommodate for that alternate distribution free approaches were introduced. One such approach is based on the martingale estimation functions which does not have any distributional assumption as discussed in Yaohua Zhang et al \cite{EE}. It is similar to the generalized method of moments as it only requires the first four conditional moments of the durations. 
 
 This is done by deriving optimal combined estimating equations based on both linear and generalized martingale differences, and by proposing recursive estimating equations based on the combined estimating equations.
 
@@ -451,25 +451,33 @@ Here we have shown several simulation study along with a short example of fittin
 ## References
 
 \begin{thebibliography}{10}
-\bibitem{GenDur}
-\alert{Aerambamoorthy Thavaneswaran, Nalini Ravishanker, You Liang}
-\newblock  {Generalized duration models and optimal estimation using estimating functions}
-\newblock {\em The Institute of Statistical Mathematics, Tokyo 2013}.
+\bibitem{ACD}
+\alert{Robert F. Engle and Jeffrey R. Russell}
+\newblock  {Autoregressive Conditional Duration: A New Model For Irregularly Spaced Transaction Data.}
+\newblock {\em Econometrica, Vol. 66, No. 5 (September, 1998)}.
+
+\bibitem{LogACD}
+\alert{Luc Bauwens, Pierre Giot.}
+\newblock  {The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.}
+\newblock {\em Annales d'Économie et de Statistique, Volume 131, 2000}.
 
 \bibitem{EE}
 \alert{Yaohua Zhang, Jian Zou, Nalini Ravishanker, Aerambamoorthy Thavaneswaran}
 \newblock  {Modeling financial durations using penalized estimating functions}
 \newblock {\em Computational Statistics and Data Analysis, Volume 131, March 2019}.
+
 \end{thebibliography}
 
-Luc Bauwens, Pierre Giot. The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.ANNALES Dâ CONOMIE ET DE STATISTIQUE. â NÂ° 60 2000
+## References (Cont..)
 
-Robert F. Engle and Jeffrey R. Russell. "Autoregressive Conditional Duration: A New Model For Irregularly Spaced Transaction Data." Econometrica, Vol. 66, No. 5 (September, 1998), 1127-1162
+\begin{thebibliography}{10}
+\bibitem{GenDur}
+\alert{Aerambamoorthy Thavaneswaran, Nalini Ravishanker, You Liang}
+\newblock  {Generalized duration models and optimal estimation using estimating functions}
+\newblock {\em The Institute of Statistical Mathematics, Tokyo 2013}.
 
-## (Cont..)
-
-R. Tsay. "Autoregressive Conditional Duration Models."  chapter I, Handbook in Econometrics II, Palgrave Publishing Company, 2007.
-
-Ellis Shaffer. "Temporal Modeling Frameworks for Coastal Wave Heights."
-
-Lilian Cheung. "High Frequency Data: Modeling Durations via the ACD and Log ACD Models."
+\bibitem{ACDtext}
+\alert{R. Tsay}
+\newblock  {Autoregressive Conditional Duration Models}
+\newblock {\em chapter I, Handbook in Econometrics II, Palgrave Publishing Company, 2007.}.
+\end{thebibliography}
