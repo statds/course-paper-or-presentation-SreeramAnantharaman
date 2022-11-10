@@ -7,152 +7,111 @@ output: beamer_presentation
 
 ## Introduction
 
-The Engle and Russell \cite{ACD} paper introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. 
+- Duration models are concerned with time intervals between events.
 
-Log-ACD model introduced by Luc Bauwens, Pierre Giot \cite{LogACD} is the logarithmic version of the ACD model that allows to introduce additional variables without sign restrictions on their coefficients.
+- Engle and Russell (1998) \cite{ACD} introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. 
 
-The ACD models are used for the analysis of data which arrive at irregular intervals. 
+- ACD models was developed to study the dynamic structure of durations in the context of irregularly spaced financial transactions data. 
 
-The model treats the time between events as a stochastic process and proposes a new class of point processes with dependent arrival rates.\
+- The model treats the time between events as a stochastic process and proposes a new class of point processes with dependent arrival rates.
 
 ## Introduction (Cont..) 
 
-In this presentation several simulation studies are shown for different types of Log-ACD models.
+- This presentation provides an overview of different techniques to model durations.
 
-Also we have shown an example where we fit an Log-ACD model for wave height duration. 
+- In this presentation several simulation studies are shown for different types of Log-ACD models.
 
-This is a very different example of the application of duration models as its mainly used for modeling financial application. 
+- Also we have shown an example where we fit an Log-ACD model for modeling wave height durations. 
 
-Here we have modeled wave height duration as a function of four different exogenous variables. 
+- This is a very different example of the application of duration models as its mainly used for modeling financial application. 
 
-## Motivation
-
-With an increase in data availability and computing power the amount of high frequency data have been increasing really fast. 
-
-One way to analyze such datasets is using duration modeling. 
-
-The main motivation behind the introduction of this model was to understand the market structures better using the durations of transactions.
-
-Also these types of data occur in irregular time instances. 
-
-So the arrival time of these transactions are considered as random variables which follow a point process. 
-
-The main goal of this model is to understand and forecast the intervals of transaction arrivals.
+- Here we have modeled wave height duration as a function of four different exogenous variables. 
 
 ## Background
 
-The Autoregressive conditional Heteroskedasticity (ARCH) and Generalized Autoregressive conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
+- The Autoregressive conditional Heteroskedasticity (ARCH) and Generalized Autoregressive conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
 
-In a linear regression the variances of the error terms are assumed to be constant throughout the data. 
+- In a linear regression the variances of the error terms are assumed to be constant throughout the data. 
 
-If this is not satisfied then we say the data is affected by Heteroskedasticity. 
+- If this is not satisfied then we say the data is affected by Heteroskedasticity. 
 
-In that case linear model may not provide precise conclusions. 
+- In that case linear model may not provide precise conclusions. 
 
-This situation is tackled by the ARCH/GARCH framework which models these variances.
-
-## ARCH
-
-Suppose we are modeling the logged returns $R_t$. 
-
-The ARCH(1) model is defined as:
-
-$R_t=\sigma_t\epsilon_t$\
-
-$\sigma_t^2=\alpha_0+\alpha_1R_{t-1}^2$\
-
-where $\alpha_0$ and $\alpha_1$ $\geq$ 0
-
-and $\epsilon_t$ ~ iid N(0,1)
-
-Here the conditional variance is modeled as an AR(1) process.\
-
-## GARCH
-
-The GARCH(1,1) model is defined as:
-
-$R_t=\sigma_t\epsilon_t$\
-
-$\sigma_t^2=\alpha_0+\alpha_1R_{t-1}^2+\beta_1\sigma_{t-1}^2$\
-
-where $\alpha_0$ and $\alpha_1$ $\geq$ 0
-
-and $\epsilon_t$ ~ iid N(0,1)
-
-Here the conditional variance is modeled as an ARMA(1,1) process.\
-
-It gives parsimonious models which are easy to estimate and has proven successful in predicting conditional variances. 
+- This situation is tackled by the ARCH/GARCH framework which models these variances.
 
 ## Relationship between GARCH and ACD
 
-Several models have been developed from the ARCH/GARCH models. 
+- Several models have been developed from the ARCH/GARCH models. 
 
-One such model is the Autoregressive Conditional Duration (ACD) model. 
+- One such model is the Autoregressive Conditional Duration (ACD) model. 
 
-Especially the ACD model is considered as an counterpart of the GARCH model. 
+- Especially the ACD model is considered as an counterpart of the GARCH model. 
 
-The ACD model is used to analyze the financial durations rather than the returns. 
+- The ACD model is used to analyze the financial durations rather than the returns. 
 
-That is instead of Modeling the conditional variances we model the conditional mean of the durations.
+- That is instead of Modeling the conditional variances we model the conditional mean of the durations.
 
-## Duration Models
+## Motivation for Duration Models
 
-Durations in finance are considered as the time interval between trades. 
+- Durations in finance are considered as the time interval between trades. 
 
-Longer duration indicate lack of trading activity which implies that there is no new information. 
+- Longer duration indicate lack of trading activity which implies that there is no new information. 
 
-Arrival of new information leads to more activity which in turn implies shorter durations. 
+- Arrival of new information leads to more activity which in turn implies shorter durations.
 
-Thus the behaviour of the durations provide useful information about the market.
-
-These are very useful in studying irregularly spaced financial transaction data.
+- Thus the behaviour of the durations provide useful information about the market.
 
 ## ACD Model
 
-The Autoregressive Conditional Duration model or ACD models are defined in terms of conditional density of durations. 
+- The Autoregressive Conditional Duration model or ACD model were proposed by Engle and Russell (1998) \cite{ACD}. They are defined in terms of conditional density of durations. 
 
-The duration is obtained as:
+- The $i^{th}$ duration is defined as time interval between the events occuring at time $t_i$ and $t_{i-1}$:
 
 $x_i = t_i - t_{i-1}$
 
-That is, the durations $x_i$ represents the interval between two time points of the event occurring.
+- ACD model assumes that the time dependence between the $i^{th}$ duration and prior durations is completely explained by $\psi_i$.
 
-Let $\psi_i$ be the expectation of the ith duration then we have,
+- Let $\psi_i$ be the expectation of the $i^{th}$ duration then we have,
 
 $E(x_i | x_{i-1}, ..., x_1) = \psi_i$ 
 
 ## ACD Model (Cont..)
 
-Then we define the durations $x_i$ as:
+- Then we define the durations $x_i$ as:
 
 $x_i = \psi_i \epsilon_i$
 
-where $\epsilon_i ~$ i.i.d with $E(\epsilon_i)=1$. And 
+- where $\epsilon_i ~$ i.i.d non negative random variable with $E(\epsilon_i)=1$ and density function $f_{\epsilon}$. And 
 
-$\psi_i = \omega + \sum_{j=0}^m \alpha_j x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
+$\psi_i = \omega + \sum_{j=1}^m \alpha_j x_{i-j} + \sum_{j=1}^q \beta_j \psi_{i-j}$
 
-With the following constraints on the coefficients: $\omega > 0$, $\beta \geq 0$, $\alpha \geq 0$ and $\alpha + \beta < 1$.
+- With the following constraints on the coefficients: $\omega > 0$, $\beta \geq 0$, $\alpha \geq 0$ and $\sum_{j=1}^m\alpha + \sum_{j=1}^q\beta < 1$ to ensure non-negativity and weak stationarity of the durations $x_i$.
 
-This is called an ACD(m, q) where the m and q refer to the orders of the 
-lags.
+- This is called an ACD(m, q) where the m and q refer to the orders of the lags.
 
 ## SCD Model
 
+- Stochastic Conditional duration (SCD) Model was proposed by Bauwens and Veredas (2004) \cite{SCD} and is based on the assumption that there exists a stichastic latent variable that generates the durations. 
+
+- The generalized form of the SCD model is:
+
 $x_i = e^{\psi_i} \epsilon_i$
 
-where $\epsilon_i ~$ i.i.d with $E(\epsilon_i)=1$. And 
+- where $\epsilon_i ~$ i.i.d with $E(\epsilon_i)=1$. And 
 
 $\psi_i = \omega + \sum_{j=0}^m \alpha_j x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j} + z_i$
 
-where $z_i$ ~ iid $N(0,\sigma_z^2)$ and $z_i$ and $\epsilon_i$ are independent.
+- where $z_i$ ~ iid $N(0,\sigma_z^2)$ and $z_i$ and $\epsilon_i$ are independent.
 
-The conditional expected duration, which was a fixed function of unknown parameters under the ACD model, is assumed to be a random variable under the SCD model, as in state space models.
+- The conditional expected duration, which was a fixed function of unknown parameters under the ACD model, is assumed to be a random variable under the SCD model, as in state space models.
 
 ## Log-ACD Model
 
-In the logarithmic ACD model or log-ACD model the autoregressive equation is defined as the logarithm of the conditional expectation of the durations. 
+- Bauwens and Giot (2000) \cite{LogACD} proposed the logarithmic-ACD model.
 
-This model relaxes the non-negativity constraint imposed by the ACD model and thus its more flexible than the ACD model. 
+- In the log-ACD model the autoregressive equation is defined as the logarithm of the conditional expectation of the durations. 
+
+- This model relaxes the non-negativity constraint imposed by the ACD model and thus its more flexible than the ACD model. 
 
 Let the conditional expectation of the ith duration be defined as,
 
@@ -168,11 +127,11 @@ where $\epsilon_i$ ~ i.i.d with $E(\epsilon_i)=\mu_{\epsilon}$.
 
 Suppose
 
-$exp(\psi_i) = exp(\phi_i) \epsilon_i$ 
+$\exp(\psi_i) = \exp(\phi_i) \epsilon_i$ 
 
 where
 
-$\psi_i = \omega + \sum_{j=0}^m \alpha_j log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
+$\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
 
 Then we can rewrite
 
@@ -189,13 +148,67 @@ Note that if $\mu_{\epsilon}$ = 1.
 
 Then we can just simply define the model as:
 
-$x_i = e^{\psi_i} \epsilon_i$
+$x_i = \exp(\psi_i) \epsilon_i$
 
-$\psi_i = \omega + \sum_{j=0}^m \alpha_j log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
+$\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}$
 
 The same constraint as above holds. 
 
 Log-SCD models can also be obtained in a similar manner as done for the ACD. 
+
+## FIACD Model
+
+- Many financial duration series show a hyperbolic decay, i.e., significant autocorrelations up to long lags.
+
+-  This suggests that a better fit might be obtained by accounting for longer term dependence in durations.
+
+- Jasiak (1998) \cite{FIACD} proposes the Fractionally Integrated ACD (FIACD) model that extends the standard ACD model to include long range durations dependence.
+
+The FIACD(m, d, q) model is defined as:
+
+$(1-B)^dx_i = \psi_i \epsilon_i$
+
+$\psi_i = \omega + \sum_{j=1}^p \alpha_j x_{i-j} + \sum_{j=1}^q \beta_j \psi_{i-j}$
+
+## FIACD Model (Cont..)
+
+where:
+
+$\omega$, $\alpha_j$ and $\beta_j$ > 0.
+
+$\sum_{j=1}^{max(p,q)}\ (\alpha + \beta) < 1$
+
+$B$ denote the backshift operator.
+
+-0.5 < d < 0.5 is the fractional differencing parameter such that
+
+$(1-B)^d=\sum_{k=0}^{\infty}\frac{\Gamma(d+1)}{\Gamma(k+1)\Gamma(d-k+1)}(-1)^kB^k$, 
+
+## AACD Model
+
+- The standard ACD model cannot fully capture nonlinear dependence between conditional duration and past information set.
+
+- Conditional durations are overpredicted by the linear specification after very short or very long durations.
+
+- Fernandes and Grammig (2006) introduce a class of augmented ACD (AACD) models encompassing most of the existing models including that models to handle nonlinearity.
+
+- The AACD models are obtained by applying a Box-Cox transformation to the conditional duration process and a nonlinear function of $\epsilon_i$ that allows asymmetric responses to small and large shocks.
+
+## AACD Model (Cont..)
+
+The AACD model is defined as:
+
+$x_i=\psi_i\epsilon_i$ 
+
+$\psi_i^{\lambda}=\omega+\alpha_j\psi_{i-1}^{\lambda}[|\epsilon_{i-1}-b|+c(\epsilon_{i-1}-b)]^{\nu}+\beta_j\psi_{i-1}^{\lambda}+\sum_{j=1}^r\delta_jz_{i-1,j}$
+
+where $\omega > 0$, $\beta > 0$, $\alpha > 0$
+
+The parameter $\lambda$ determines whether the Box–Cox transformation is concave or convex.
+
+The asymmetric response to shocks and the shape of the piecewise function depend on parameters b and c.
+
+The parameter $\nu$ induces concavity or convexity to the shock impact curve.
 
 ## Likelihood Function
 
@@ -217,11 +230,11 @@ $l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\psi_i}exp(\frac{-x_i}{\psi_i})$\
 
 Then taking log on both sides\
 
-$L(\theta|x_n)=\sum_{i=1}^n-log(\psi_i)-(\frac{x_i}{\psi_i})$\
+$L(\theta|x_n)=\sum_{i=1}^n-\log(\psi_i)-(\frac{x_i}{\psi_i})$\
 
 Which can be written as:\
 
-$L(\theta|x_n)=-\sum_{i=g+1}^n[log(\psi_i)+(\frac{x_i}{\psi_i})]$\
+$L(\theta|x_n)=-\sum_{i=g+1}^n[\log(\psi_i)+(\frac{x_i}{\psi_i})]$\
 
 ## Likelihood Function for Log-ACD
 
@@ -229,7 +242,7 @@ Similarly if we assume that the error follows an exponential distribution then t
 
 The likelihood function is written as: \
 
-$l(\theta|x_n)=\prod_{i=1}^n\frac{1}{exp(\psi_i)}exp(\frac{-x_i}{exp(\psi_i)})$\
+$l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\exp(\psi_i)}exp(\frac{-x_i}{\exp(\psi_i)})$\
 
 Then taking log on both sides\
 
@@ -528,23 +541,37 @@ Here we have shown several simulation study along with a short example of fittin
 \newblock  {The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.}
 \newblock {\em Annales d'Économie et de Statistique, Volume 131, 2000}.
 
-\bibitem{EE}
-\alert{Yaohua Zhang, Jian Zou, Nalini Ravishanker, Aerambamoorthy Thavaneswaran}
-\newblock  {Modeling financial durations using penalized estimating functions}
-\newblock {\em Computational Statistics and Data Analysis, Volume 131, March 2019}.
+\bibitem{SCD}
+\alert{Luc Bauwens and David Veredas}
+\newblock  {The stochastic conditional duration model: a latent variable model for the analysis of financial durations}
+\newblock {\em Journal of Econometrics, Volume 119, 2004}.
 
+\bibitem{FIACD}
+\alert{Joann Jasiak}
+\newblock  {Persistence in Intertrade Durations}
+\newblock {\em Capital Markets: Market Microstructure, 1999}.
 \end{thebibliography}
 
 ## References (Cont..)
 
 \begin{thebibliography}{10}
-\bibitem{GenDur}
-\alert{Aerambamoorthy Thavaneswaran, Nalini Ravishanker, You Liang}
-\newblock  {Generalized duration models and optimal estimation using estimating functions}
-\newblock {\em The Institute of Statistical Mathematics, Tokyo 2013}.
+\bibitem{AACD}
+\alert{Marcelo Fernandes and Joachim Grammig}
+\newblock  {A family of autoregressive conditional duration models}
+\newblock {\em Journal of Econometrics, Volume 130, 2006}.
 
 \bibitem{ACDtext}
 \alert{R. Tsay}
 \newblock  {Autoregressive Conditional Duration Models}
 \newblock {\em chapter I, Handbook in Econometrics II, Palgrave Publishing Company, 2007.}.
+
+\bibitem{EE}
+\alert{Yaohua Zhang, Jian Zou, Nalini Ravishanker, Aerambamoorthy Thavaneswaran}
+\newblock  {Modeling financial durations using penalized estimating functions}
+\newblock {\em Computational Statistics and Data Analysis, Volume 131, March 2019}.
+
+\bibitem{GenDur}
+\alert{Aerambamoorthy Thavaneswaran, Nalini Ravishanker, You Liang}
+\newblock  {Generalized duration models and optimal estimation using estimating functions}
+\newblock {\em The Institute of Statistical Mathematics, Tokyo 2013}.
 \end{thebibliography}
