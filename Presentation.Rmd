@@ -186,7 +186,7 @@ $(1-B)^d=\sum_{k=0}^{\infty}\frac{\Gamma(d+1)}{\Gamma(k+1)\Gamma(d-k+1)}(-1)^kB^
 
 - Conditional durations are overpredicted by the linear specification after very short or very long durations.
 
-- Fernandes and Grammig (2006) introduce a class of augmented ACD (AACD) models encompassing most of the existing models including that models to handle nonlinearity.
+- Fernandes and Grammig (2006) \cite{AACD} introduce a class of augmented ACD (AACD) models encompassing most of the existing models including that models to handle nonlinearity.
 
 - The AACD models are obtained by applying a Box-Cox transformation to the conditional duration process and a nonlinear function of $\epsilon_i$ that allows asymmetric responses to small and large shocks.
 
@@ -582,15 +582,15 @@ The results for Log-ACD(2,1) are as follows:
 \newblock  {Autoregressive Conditional Duration: A New Model For Irregularly Spaced Transaction Data.}
 \newblock {\em Econometrica, Vol. 66, No. 5 (September, 1998)}.
 
-\bibitem{LogACD}
-\alert{Luc Bauwens, Pierre Giot.}
-\newblock  {The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.}
-\newblock {\em Annales d'Économie et de Statistique, Volume 131, 2000}.
-
 \bibitem{SCD}
 \alert{Luc Bauwens and David Veredas}
 \newblock  {The stochastic conditional duration model: a latent variable model for the analysis of financial durations}
 \newblock {\em Journal of Econometrics, Volume 119, 2004}.
+
+\bibitem{LogACD}
+\alert{Luc Bauwens, Pierre Giot.}
+\newblock  {The Logarithmic ACD Model: An Application to the Bid-Ask Quote Process of Three NYSE Stocks.}
+\newblock {\em Annales d'Économie et de Statistique, Volume 131, 2000}.
 
 \bibitem{FIACD}
 \alert{Joann Jasiak}
