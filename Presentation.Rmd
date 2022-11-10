@@ -55,6 +55,8 @@ output: beamer_presentation
 
 - Thus the behaviour of the durations provide useful information about the market.
 
+# Types of Duration Models
+
 ## ACD Model
 
 - The ACD model are defined in terms of conditional density of durations. 
@@ -269,6 +271,8 @@ $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$
 - It is similar to the generalized method of moments as it only requires the first four conditional moments of the durations. 
 
 - This is done by deriving optimal combined estimating equations based on both linear and generalized martingale differences, and by proposing recursive estimating equations based on the combined estimating equations.
+
+# Simulation and Data analysis
 
 ## Data Source
 
