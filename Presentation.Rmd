@@ -9,9 +9,9 @@ output: beamer_presentation
 
 - Duration models are concerned with time intervals between events.
 
-- Engle and Russell (1998) \cite{ACD} introduced the ACD model, which presents a new way of modelling random durations arising from high frequency data. 
+- Engle and Russell (1998) \cite{ACD} introduced the Autoregressive Conditional Duration model, which presents a new way of modelling random durations arising from high frequency data. 
 
-- ACD models was developed to study the dynamic structure of durations in the context of irregularly spaced financial transactions data. 
+- ACD models were developed to study the dynamic structure of durations in the context of irregularly spaced financial transactions data. 
 
 - The model treats the time between events as a stochastic process and proposes a new class of point processes with dependent arrival rates.
 
@@ -19,17 +19,13 @@ output: beamer_presentation
 
 - This presentation provides an overview of different techniques to model durations.
 
-- In this presentation several simulation studies are shown for different types of Log-ACD models.
+- Several simulation studies are presented for different types of Log-ACD models.
 
-- Also we have shown an example where we fit an Log-ACD model for modeling wave height durations. 
-
-- This is a very different example of the application of duration models as its mainly used for modeling financial application. 
-
-- Here we have modeled wave height duration as a function of four different exogenous variables. 
+- We have also shown an example where a log ACD model is fit to wave height durations which is a very different example of the application. 
 
 ## Background
 
-- The Autoregressive conditional Heteroskedasticity (ARCH) and Generalized Autoregressive conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
+- The Autoregressive Conditional Heteroskedasticity (ARCH) and Generalized Autoregressive Conditional Heteroskedasticity (GARCH) models are considered an important modeling tool if the goal of the study is to analyze and forecast volatility in a data especially in financial applications. 
 
 - In a linear regression the variances of the error terms are assumed to be constant throughout the data. 
 
@@ -49,11 +45,9 @@ output: beamer_presentation
 
 - The ACD model is used to analyze the financial durations rather than the returns. 
 
-- That is instead of Modeling the conditional variances we model the conditional mean of the durations.
+- That is, instead of modeling the conditional variances we model the conditional mean of the durations.
 
 ## Motivation for Duration Models
-
-- Durations in finance are considered as the time interval between trades. 
 
 - Longer duration indicate lack of trading activity which implies that there is no new information. 
 
@@ -63,7 +57,7 @@ output: beamer_presentation
 
 ## ACD Model
 
-- The Autoregressive Conditional Duration model or ACD model were proposed by Engle and Russell (1998) \cite{ACD}. They are defined in terms of conditional density of durations. 
+- The ACD model are defined in terms of conditional density of durations. 
 
 The $i^{th}$ duration is defined as time interval between the events occuring at time $t_i$ and $t_{i-1}$:
 
@@ -77,17 +71,21 @@ $E(x_i | x_{i-1}, ..., x_1) = \psi_i$
 
 ## ACD Model (Cont..)
 
-Then we define the durations $x_i$ as:
+Then the durations $x_i$ as:
 
 $x_i = \psi_i \epsilon_i$
 
-where $\epsilon_i ~$ i.i.d non negative random variable with $E(\epsilon_i)=1$ and density function $f_{\epsilon}$. And 
+where $\epsilon_i$ are i.i.d non negative random variable with $E(\epsilon_i)=1$ and density function $f_{\epsilon}$. And 
 
 $\psi_i = \omega + \sum_{j=1}^m \alpha_j x_{i-j} + \sum_{j=1}^q \beta_j \psi_{i-j}$
 
-With the following constraints on the coefficients: $\omega > 0$, $\beta \geq 0$, $\alpha \geq 0$ and $\sum_{j=1}^m\alpha + \sum_{j=1}^q\beta < 1$ to ensure non-negativity and weak stationarity of the durations $x_i$.
+With the following constraints on the coefficients:
 
-This is called an ACD(m, q) where the m and q refer to the orders of the lags.
+$\omega > 0$, $\beta \geq 0$, $\alpha \geq 0$ 
+
+and $\sum_{j=1}^m\alpha + \sum_{j=1}^q\beta < 1$ to ensure non-negativity and weak stationarity of the durations $x_i$.
+
+This is called an $ACD(m, q)$ where the $m$ and $q$ refer to the orders of the lags.
 
 ## SCD Model
 
@@ -123,7 +121,7 @@ Then we define the durations $x_i$ as:
 
 $x_i = e^{\phi_i} \epsilon_i$
 
-where $\epsilon_i$ ~ i.i.d with $E(\epsilon_i)=\mu_{\epsilon}$. 
+where $\epsilon_i$ are i.i.d with $E(\epsilon_i)=\mu_{\epsilon}$. 
 
 Suppose
 
@@ -137,16 +135,14 @@ Then we can rewrite
 
 $x_i = \frac{e^{\psi_i}}{\mu_{\epsilon}} \epsilon_i$
 
+with the following constraints: $|\alpha_j + \beta_j| < 1$.
+
 ## Log-ACD Model (Cont..)
 
-With the following constraints: $|\alpha_j + \beta_j| < 1$.
-
-This is called an Log-ACD(m, q) where the m and q refer to the orders of the 
+This is called an $Log-ACD(m, q)$ where the $m$ and $q$ refer to the orders of the 
 lags. 
 
-Note that if $\mu_{\epsilon}$ = 1. 
-
-Then we can just simply define the model as:
+Note that if $\mu_{\epsilon}$ = 1, then we can just simply define the model as:
 
 $x_i = \exp(\psi_i) \epsilon_i$
 
@@ -206,11 +202,11 @@ where $\omega > 0$, $\beta > 0$, $\alpha > 0$
 
 The parameter $\lambda$ determines whether the Box–Cox transformation is concave or convex.
 
-The asymmetric response to shocks and the shape of the piecewise function depend on parameters b and c.
+The asymmetric response to shocks and the shape of the piecewise function depend on parameters $b$ and $c$.
 
 The parameter $\nu$ induces concavity or convexity to the shock impact curve.
 
-## Likelihood Function
+## Likelihood Function for duration models
 
 Let ($x_1,...,x_n$) be the observed durations. 
 
@@ -228,11 +224,9 @@ Let us consider an ACD Model. The main assumption of the ACD model is that the s
 
 $\epsilon_i=\frac{x_i}{\psi_i}$
 
-are independent and identically distributed, that is iid with $E(\epsilon_i)=1$
+are iid with $E(\epsilon_i)=1$
 
-Let $f_{\epsilon}$ be the density of $\epsilon$. 
-
-Then:
+Let $f_{\epsilon}$ be the density of $\epsilon$. Then:
 
 $f(x_i|x_{i-1},\theta)=\frac{1}{\psi_i}f_{\epsilon}$
 
@@ -242,15 +236,13 @@ $L(\theta|x_n)=\sum_{i=1}^n[-\log(\psi_i)+f_{\epsilon}]$\
 
 ## Likelihood Function for ACD (Cont..)
 
-If we assume that the error follow an exponential distribution then the likelihood function for the ACD model is:
+If we assume that the error terms follow an exponential distribution then the likelihood function for the ACD model is:
 
 $l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\psi_i}exp(\frac{-x_i}{\psi_i})$
 
-Then the log likelihood is:
+Then the corresponding log likelihood is:
 
 $L(\theta|x_n)=\sum_{i=1}^n-\log(\psi_i)-(\frac{x_i}{\psi_i})$
-
-Which can be written as:
 
 $L(\theta|x_n)=-\sum_{i=1}^n[\log(\psi_i)+(\frac{x_i}{\psi_i})]$
 
@@ -260,11 +252,9 @@ Similarly if we assume that the error follows an exponential distribution then t
 
 $l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\exp(\psi_i)}exp(\frac{-x_i}{\exp(\psi_i)})$
 
-Then the log likelihood is:
+Then the corresponding log likelihood is:
 
 $L(\theta|x_n)=\sum_{i=1}^n-\psi_i-(\frac{x_i}{exp(\psi_i)})$
-
-Which can be written as:
 
 $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$
 
@@ -272,7 +262,7 @@ $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$
 
 - Sometimes it is not possible to assume a distribution for the errors in practice. 
 
-- In order to accommodate for that alternate distribution free approaches were introduced. 
+- In order to accommodate for that, distribution free approaches were introduced. 
 
 - One such approach is based on the combined martingale estimation functions which does not have any distributional assumption as discussed in Thavaneswaran et al (2015) \cite{EE} for a class of generalized duration models. 
 
@@ -282,7 +272,7 @@ $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$
 
 ## Data Source
 
-- This data can be obtained from two main portals: the National Oceanic and Atmospheric Administration (NOAA) and the United States Army Corps of Engineers (USACE) databases. 
+- The data is obtained from two main portals: the National Oceanic and Atmospheric Administration (NOAA) and the United States Army Corps of Engineers (USACE) database. 
 
 - Buoy fleets are independently owned and operated by universities, private research institutes, and government agencies. 
 
@@ -290,7 +280,31 @@ $L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]$
 
 ## Data Description
 
-The dataset contains the following variables: Year, Month, Day, Hour, Wave height, Wind speed, Fetch, Wind speed square, Z2, Z3 and Z4. 
+The dataset contains the following variables: 
+
+- Year 
+
+- Month
+
+- Day
+
+- Hour 
+
+- Wave height
+
+- Wind speed
+
+- Fetch
+
+- Wind speed square
+
+- Z2 
+
+- Z3 
+
+- Z4
+
+## Data Description (Cont..)
 
 The variables Z2, Z3 and Z4 are computed as follows:
 
@@ -302,9 +316,9 @@ $Z_{4,t-r} = \frac{Fetch_{t-r}^{3/2}}{Speed_{t-r}}$
 
 ## Data Preparation
 
-- So the data is available for each hour from the 11-01-2004 to 10-31-2013. 
+- The data is available for each hour from the 11-01-2004 to 10-31-2013. 
 
-- Another important thing to note is each year can be divided into two periods: (i) Windy Months (Nov-Mar) (ii) Calm Months (Apr-Oct). 
+- Each year can be divided into two periods: (i) Windy Months (Nov-Mar) (ii) Calm Months (Apr-Oct). 
 
 So modeling can also be done in two ways: 
 
@@ -324,7 +338,7 @@ where $x_i$ is $i^{th}$ hourly duration and $t_i$ is $i^{th}$ time point when th
 
 - So we can do this based on 3 different thresholds: 2ft, 3ft and 4ft. 
 
-- That is the durations are calculated as the difference in the hourly time for a wave to reach a threshold. 
+- The durations are calculated as the difference in the hourly time for a wave to reach a threshold. 
 
 ## Plots of Durations
 
@@ -334,7 +348,7 @@ where $x_i$ is $i^{th}$ hourly duration and $t_i$ is $i^{th}$ time point when th
 knitr::include_graphics("dur_plot_2ft.png")
 ```
 
-## Plot for 3ft 
+## Plot of Durations (Cont..)
 
 2) Duration plot for the entire data based on 3ft threshold:
 
@@ -342,15 +356,13 @@ knitr::include_graphics("dur_plot_2ft.png")
 knitr::include_graphics("dur_plot_3ft.png")
 ```
 
-## Plot for 4ft 
+## Plot of Durations (Cont..)
 
 3) Duration plot for the entire data based on 4ft threshold:
 
-```{r  label = "4ft durations", echo = FALSE, fig.cap = "Wave duration at 4ft threshold", out.width = '95%'}
+```{r  label = "4ft durations", echo = FALSE, fig.cap = "Wave duration at 4ft threshold", out.width = '100%'}
 knitr::include_graphics("dur_plot_4ft.png")
 ```
-
-From the plots we can see that the pattern of the plot looks similar and the only difference is the duration length.
 
 ## Plots based on Calm Season
 
@@ -382,9 +394,9 @@ $\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_
 
 Where $z_{i,j}$ are the exogenous variables. 
 
-The exogenous variables used for modeling are Wind speed square, z2, z3, z4. 
+The exogenous variables used for modeling are $wind speed square, z2, z3, z4$. 
 
-And the missing data in the exogenous variables were backfilled. 
+The missing data in the exogenous variables were backfilled. 
 
 ## Procedure
 
@@ -392,11 +404,11 @@ And the missing data in the exogenous variables were backfilled.
 
 - This was done using the properties of non-Gaussian autoregressive moving average (ARMA) models. 
 
-- We first take the logarithmic transformation of the durations $x_i$ and then fit an ARMA(Max(p,q),q) model to the log transformed durations. 
+- We first take the logarithmic transformation of the durations $x_i$ and then fit an $ARMA(Max(p,q),q)$ model to the log transformed durations. 
 
 - Then based on the coefficients of the ARMA model we can obtain our initial value estimate.
 
-- This can be done using the arima function in R using the method as CSS which corresponds to minimizing the conditional sum-of-squares.
+- This can be done using the *arima* function in R using the *method as CSS* which corresponds to minimizing the conditional sum-of-squares.
 
 ## Procedure (Cont..)
 
@@ -404,11 +416,11 @@ And the missing data in the exogenous variables were backfilled.
 
 - The final set of parameters are estimated using the conditional likelihood approach. 
 
-- This can be done using the optim function or nlminb function in r. 
+- This can be done using the *optim* function or *nlminb* function in R. 
 
-- The third step is to do a h-step ahead forecast.
+- The third step is to do a *h-step* ahead forecast.
 
-- Then compute the MAE for the forecasts. 
+- Then compute the Mean absolute percentage error (MAPE) for the forecasts. 
 
 ## Simulation Study 1
 
