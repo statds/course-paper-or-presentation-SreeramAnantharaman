@@ -253,7 +253,7 @@ With the following constraints on the coefficients:
 and \(\sum_{j=1}^m\alpha + \sum_{j=1}^q\beta < 1\) to ensure
 non-negativity and weak stationarity of the durations \(x_i\).
 
-This is called an \(ACD(m, q)\) where the \(m\) and \(q\) refer to the
+This is called an ACD(\(m, q\)) where the \(m\) and \(q\) refer to the
 orders of the lags.
 \end{frame}
 
@@ -328,7 +328,7 @@ with the following constraints: \(|\alpha_j + \beta_j| < 1\).
 
 \begin{frame}{Log-ACD Model (Cont..)}
 \protect\hypertarget{log-acd-model-cont..-1}{}
-This is called an \(Log-ACD(m, q)\) where the \(m\) and \(q\) refer to
+This is called an Log-ACD(\(m, q\)) where the \(m\) and \(q\) refer to
 the orders of the lags.
 
 Note that if \(\mu_{\epsilon}\) = 1, then we can just simply define the
@@ -437,8 +437,8 @@ The likelihood function of the data is:
 The marginal density of \(f(x_g|\theta)\) is complicated for the ACD
 model. And because its impact on the likelihood function is diminishing
 as the \(n\) increases, this marginal density is often ignored,
-resulting in use of the conditional-likelihood method (Tsay
-(\protect\hyperlink{ref-ACDtext}{2009})).
+resulting in use of the conditional-likelihood method
+(\protect\hyperlink{ref-ACDtext}{Tsay 2009}).
 \end{frame}
 
 \begin{frame}{Likelihood Function for ACD}
@@ -706,9 +706,9 @@ where \(\epsilon_i ~\) i.i.d with some density.
 
 and
 
-\(\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{j}\)
+\(\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{i,j}\)
 
-Where \(z_{j}\) are the exogenous variables.
+Where \(z_{i,j}\) are the exogenous variables.
 
 The exogenous variables used for modeling are
 \(wind speed square, z2, z3, z4\).
@@ -765,21 +765,19 @@ to return fitted values close to the values used to simulate the
 datasets. All simulations are based on exponential distributions for the
 errors.
 
-The results for Log-ACD(2,1) are as follows:
-
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+\begin{table}[ht]
+\caption{Results for Log-ACD(2,1)}
+\begin{tabular}{|c|c|c|}
  \hline
  Parameters& Simulated & Fitted \\
  \hline
- Omega   & 0.30 & 0.33 \\
-  \hline
- Alpha1   & 0.20 & 0.17 \\
-  \hline
- Beta   & 0.70 & 0.65 \\
-  \hline
- Delta  & 0  & 0 \\
-  \hline
+ $\omega$   & 0.30 & 0.33 \\
+ $\alpha_1$   & 0.20 & 0.17 \\
+ $\beta_1$   & 0.70 & 0.65 \\
+ $\delta_1$  & 0  & 0 \\
+ \hline
 \end{tabular}
+\end{table}
 
 The simulation results are based on average of 10 simulations of size
 1500. Also note that the exogenous variables coefficient are considered
@@ -788,27 +786,22 @@ to be zero.
 
 \begin{frame}{Simulation Study 2}
 \protect\hypertarget{simulation-study-2}{}
-The results for Log-ACD(1,1) are as follows:
-
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|  }
+\begin{table}[ht]
+\caption{Results for Log-ACD(1,1)}
+\begin{tabular}{|c|c|c|}
  \hline
  Parameters& Simulated & Fitted \\
  \hline
- Omega   & 0.30 & 0.31  \\
-  \hline
- Alpha1   & 0.01 & 0.01  \\
-  \hline
- Beta1  & 0.60 & 0.60  \\
-  \hline
- Delta1   & 0.08 & 0.08  \\
-  \hline
- Delta2   & -0.61 & -0.63  \\
-  \hline
- Delta3   & 0.75 & 0.78   \\
-  \hline
- Delta4   & -0.31 & -0.34 \\
-  \hline
+ $\omega$   & 0.30 & 0.31  \\
+ $\alpha_1$   & 0.01 & 0.01  \\
+ $\beta_1$  & 0.60 & 0.60  \\
+ $\delta_1$   & 0.08 & 0.08  \\
+ $\delta_2$   & -0.61 & -0.63  \\
+ $\delta_3$   & 0.75 & 0.78   \\
+ $\delta_4$   & -0.31 & -0.34 \\
+ \hline
 \end{tabular}
+\end{table}
 
 The simulation results are based on average of 100 simulations of size
 1500.
@@ -816,33 +809,25 @@ The simulation results are based on average of 100 simulations of size
 
 \begin{frame}{Simulation Study 3}
 \protect\hypertarget{simulation-study-3}{}
-The results for Log-ACD(5,3) are as follows:
-
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|  }
+\begin{table}[ht]
+\caption{Results for Log-ACD(5,3)}
+\begin{tabular}{|c|c|c|}
  \hline
  Parameters& Simulated & Fitted \\
  \hline
- Omega   & 0.10 & 0.10  \\
-  \hline
- Alpha1   & 0.10 & 0.10  \\
-  \hline
- Alpha2  & 0.20 & 0.19  \\
-  \hline
- Alpha3   & -0.10 & -0.11  \\
-  \hline
- Alpha4   & 0.02 & 0.03  \\
-  \hline
- Alpha5   & -0.15 & -0.15   \\
-  \hline
- Beta1   & 0.70 & 0.74 \\
-  \hline
- Beta2   & 0 & 0.01 \\
-  \hline
- Beta3   & 0 & 0 \\
-  \hline
- Delta   & 0.05 & 0.05 \\
-  \hline
+ $\omega$   & 0.10 & 0.10  \\
+ $\alpha_1$   & 0.10 & 0.10  \\
+ $\alpha_2$  & 0.20 & 0.19  \\
+ $\alpha_3$   & -0.10 & -0.11  \\
+ $\alpha_4$   & 0.02 & 0.03  \\
+ $\alpha_5$   & -0.15 & -0.15   \\
+ $\beta_1$   & 0.70 & 0.74 \\
+ $\beta_2$   & 0 & 0.01 \\
+ $\beta_3$   & 0 & 0 \\
+ $\delta_1$   & 0.05 & 0.05 \\
+ \hline
 \end{tabular}
+\end{table}
 
 The simulation results are based on average of 100 simulations of size
 1500.
@@ -853,23 +838,20 @@ The simulation results are based on average of 100 simulations of size
 All outputs are based on the durations computed for windy period for the
 year 2010 with a threshold of 2ft.
 
-The results for Log-ACD(2,1) are as follows:
-
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+\begin{table}[ht]
+\caption{Results for Log-ACD(2,1) with no exogenous variables}
+\begin{tabular}{|c|c|c|}
  \hline
  Parameters & Initial & Fitted \\
  \hline
- Omega   & 0.01 & 0.21 \\
-  \hline
- Alpha1    & 0.05 & -0.02 \\
-  \hline
- Alpha2   & -0.01 & 0.09 \\
-  \hline
- Beta    & 0.95 & 0.85 \\
-  \hline
- Delta   & 0  & 0 \\
-  \hline
+ $\omega$   & 0.01 & 0.21 \\
+ $\alpha_1$    & 0.05 & -0.02 \\
+ $\alpha_2$   & -0.01 & 0.09 \\
+ $\beta_1$    & 0.95 & 0.85 \\
+ $\delta_1$   & 0  & 0 \\
+ \hline
 \end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Model fits (Cont..)}
@@ -877,29 +859,23 @@ The results for Log-ACD(2,1) are as follows:
 This table shows the reuslts based on the model using the four exogenous
 variables: wind speed square, z2, z3 and z4.
 
-The results for Log-ACD(2,1) are as follows:
-
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+\begin{table}[ht]
+\caption{Results for Log-ACD(2,1) with exogenous variables}
+\begin{tabular}{|c|c|c|}
  \hline
  Parameters& Initial & Fitted  \\
  \hline
- Omega   & 0.03 & 0.23 \\
-  \hline
- Alpha1   & 0.06 & 0.11 \\
-  \hline
- Alpha2   & 0.03 & -0.02 \\
-  \hline
- Beta   & -0.11 & 0.20 \\
-  \hline
- Delta1   & 0.45 & 0.40  \\
-  \hline
- Delta2   & -1.19 & -1.26  \\
-  \hline
- Delta3   & 1.18 & 1.24  \\
-  \hline
- Delta4   & -0.31 & -0.35  \\
-  \hline
+ $\omega$   & 0.03 & 0.23 \\
+ $\alpha_1$   & 0.06 & 0.11 \\
+ $\alpha_2$   & 0.03 & -0.02 \\
+ $\beta_1$   & -0.11 & 0.20 \\
+ $\delta_1$   & 0.45 & 0.40  \\
+ $\delta_2$   & -1.19 & -1.26  \\
+ $\delta_3$   & 1.18 & 1.24  \\
+ $\delta_4$   & -0.31 & -0.35  \\
+ \hline
 \end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{Forecast evaluation}
