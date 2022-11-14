@@ -147,7 +147,7 @@
   Several simulation studies are presented for different types of
   Log-ACD models.
 \item
-  We have also shown an example where a log ACD model is fit to wave
+  We have also shown an example where a log-ACD model is fit to wave
   height durations which is a very different example of the application.
 \end{itemize}
 \end{frame}
@@ -224,7 +224,7 @@
 The \(i^{th}\) duration is defined as time interval between the events
 occuring at time \(t_i\) and \(t_{i-1}\):
 
-\(x_i = t_i - t_{i-1}\)
+\(x_i = t_i - t_{i-1}\).
 
 ACD model assumes that the time dependence between the \(i^{th}\)
 duration and prior durations is completely explained by \(\psi_i\).
@@ -232,21 +232,22 @@ duration and prior durations is completely explained by \(\psi_i\).
 Let \(\psi_i\) be the expectation of the \(i^{th}\) duration then we
 have,
 
-\(E(x_i | x_{i-1}, ..., x_1) = \psi_i\)
+\(E(x_i | x_{i-1}, ..., x_1) = \psi_i\).
 \end{frame}
 
 \begin{frame}{ACD Model (Cont..)}
 \protect\hypertarget{acd-model-cont..}{}
-Then the durations \(x_i\) as:
+Then the durations \(x_i\) can be written as:
 
-\(x_i = \psi_i \epsilon_i\)
+\(x_i = \psi_i \epsilon_i\) ;
 
 where \(\epsilon_i\) are i.i.d non negative random variable with
-\(E(\epsilon_i)=1\) and density function \(f_{\epsilon}\). And
+\(E(\epsilon_i)=1\) and density function \(f_{\epsilon}\) , and,
 
 \(\psi_i = \omega + \sum_{j=1}^m \alpha_j x_{i-j} + \sum_{j=1}^q \beta_j \psi_{i-j}\)
+;
 
-With the following constraints on the coefficients:
+with the following constraints on the coefficients:
 
 \(\omega > 0\), \(\beta \geq 0\), \(\alpha \geq 0\)
 
@@ -270,11 +271,12 @@ orders of the lags.
 
 The generalized form of the SCD model is:
 
-\(x_i = e^{\psi_i} \epsilon_i\)
+\(x_i = e^{\psi_i} \epsilon_i\) ;
 
-where \(\epsilon_i ~\) i.i.d with \(E(\epsilon_i)=1\). And
+where \(\epsilon_i ~\) i.i.d with \(E(\epsilon_i)=1\), and,
 
 \(\psi_i = \omega + \sum_{j=0}^m \alpha_j x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j} + z_i\)
+;
 
 where \(z_i\) \textasciitilde{} iid \(N(0,\sigma_z^2)\) and \(z_i\) and
 \(\epsilon_i\) are independent.
@@ -298,32 +300,33 @@ the SCD model, as in state space models.
   model and thus its more flexible than the ACD model.
 \end{itemize}
 
-Let the conditional expectation of the ith duration be defined as,
+Let the conditional expectation of the \(i^{th}\) duration be defined
+as,
 
-\(E(x_i | x_{i-1}, ..., x_1) = e^{\phi_i} \mu_{\epsilon}\)
+\(E(x_i | x_{i-1}, ..., x_1) = e^{\phi_i} \mu_{\epsilon}\).
 \end{frame}
 
 \begin{frame}{Log-ACD Model (Cont..)}
 \protect\hypertarget{log-acd-model-cont..}{}
 Then we define the durations \(x_i\) as:
 
-\(x_i = e^{\phi_i} \epsilon_i\)
+\(x_i = e^{\phi_i} \epsilon_i\) ;
 
 where \(\epsilon_i\) are i.i.d with \(E(\epsilon_i)=\mu_{\epsilon}\).
 
 Suppose
 
-\(\exp(\psi_i) = \exp(\phi_i) \epsilon_i\)
+\(e^{\psi_i} = e^{\phi_i} \epsilon_i\),
 
 where
 
-\(\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}\)
+\(\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}\).
 
 Then we can rewrite
 
-\(x_i = \frac{e^{\psi_i}}{\mu_{\epsilon}} \epsilon_i\)
+\(x_i = \frac{e^{\psi_i}}{\mu_{\epsilon}} \epsilon_i\);
 
-with the following constraints: \(|\alpha_j + \beta_j| < 1\).
+with the following constraint: \(|\alpha_j + \beta_j| < 1\).
 \end{frame}
 
 \begin{frame}{Log-ACD Model (Cont..)}
@@ -334,9 +337,9 @@ the orders of the lags.
 Note that if \(\mu_{\epsilon}\) = 1, then we can just simply define the
 model as:
 
-\(x_i = \exp(\psi_i) \epsilon_i\)
+\(x_i = e^{\psi_i} \epsilon_i\);
 
-\(\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}\)
+\(\psi_i = \omega + \sum_{j=0}^m \alpha_j \log x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}\);
 
 The same constraint as above holds.
 
@@ -359,27 +362,28 @@ ACD.
   include long range durations dependence.
 \end{itemize}
 
-The FIACD(m, d, q) model is defined as:
+The FIACD(\(m, d, q\)) model is defined as:
 
-\((1-B)^dx_i = \psi_i \epsilon_i\)
+\((1-B)^dx_i = \psi_i \epsilon_i\);
 
 \(\psi_i = \omega + \sum_{j=1}^p \alpha_j x_{i-j} + \sum_{j=1}^q \beta_j \psi_{i-j}\)
+;
 \end{frame}
 
 \begin{frame}{FIACD Model (Cont..)}
 \protect\hypertarget{fiacd-model-cont..}{}
 where:
 
-\(\omega\), \(\alpha_j\) and \(\beta_j\) \textgreater{} 0.
+\(\omega\), \(\alpha_j\) and \(\beta_j > 0\) ;
 
-\(\sum_{j=1}^{max(p,q)}\ (\alpha + \beta) < 1\)
+\(\sum_{j=1}^{max(p,q)}\ (\alpha + \beta) < 1\) ;
 
-\(B\) denote the backshift operator.
+\(B\) denotes the backshift operator ;
 
 -0.5 \textless{} d \textless{} 0.5 is the fractional differencing
-parameter such that
+parameter such that,
 
-\((1-B)^d=\sum_{k=0}^{\infty}\frac{\Gamma(d+1)}{\Gamma(k+1)\Gamma(d-k+1)}(-1)^kB^k\),
+\((1-B)^d=\sum_{k=0}^{\infty}\frac{\Gamma(d+1)}{\Gamma(k+1)\Gamma(d-k+1)}(-1)^kB^k\).
 \end{frame}
 
 \begin{frame}{AACD Model}
@@ -407,11 +411,11 @@ parameter such that
 \protect\hypertarget{aacd-model-cont..}{}
 The AACD model is defined as:
 
-\(x_i=\psi_i\epsilon_i\)
+\(x_i=\psi_i\epsilon_i\) ;
 
-\(\psi_i^{\lambda}=\omega+\alpha_j\psi_{i-1}^{\lambda}[|\epsilon_{i-1}-b|+c(\epsilon_{i-1}-b)]^{\nu}+\beta_j\psi_{i-1}^{\lambda}+\sum_{j=1}^r\delta_jz_{i-1,j}\)
+\(\psi_i^{\lambda}=\omega+\alpha_j\psi_{i-1}^{\lambda}[|\epsilon_{i-1}-b|+c(\epsilon_{i-1}-b)]^{\nu}+\beta_j\psi_{i-1}^{\lambda}+\sum_{j=1}^r\delta_jz_{i-1,j}\),
 
-where \(\omega > 0\), \(\beta > 0\), \(\alpha > 0\)
+where \(\omega > 0\), \(\beta > 0\), \(\alpha > 0\).
 
 The parameter \(\lambda\) determines whether the Box--Cox transformation
 is concave or convex.
@@ -427,36 +431,36 @@ curve.
 \protect\hypertarget{likelihood-function-for-duration-models}{}
 Let (\(x_1,...,x_n\)) be the observed durations.
 
-And \(\theta=(\omega, \alpha_1, ..., \alpha_p, \beta_1,..., \beta_q)\)
-be the parameters that needs to be estimated and let g = max(p, q).
+Let \(\theta=(\omega, \alpha_1, ..., \alpha_p, \beta_1,..., \beta_q)\)
+be the parameters that needs to be estimated and \(g = max(p, q)\).
 
 The likelihood function of the data is:
 
-\(f(x_n|\theta)=f(x_g|\theta)\prod_{i=g+1}^nf(x_i|x_{i-1},\theta)\)
+\(f(x_n|\theta)=f(x_g|\theta)\prod_{i=g+1}^nf(x_i|x_{i-1},\theta)\).
 
 The marginal density of \(f(x_g|\theta)\) is complicated for the ACD
-model. And because its impact on the likelihood function is diminishing
-as the \(n\) increases, this marginal density is often ignored,
-resulting in use of the conditional-likelihood method
+model. Since its impact on the likelihood function is diminishing as
+\(n\) increases, this marginal density is often ignored, resulting in
+use of the conditional-likelihood method
 (\protect\hyperlink{ref-ACDtext}{Tsay 2009}).
 \end{frame}
 
 \begin{frame}{Likelihood Function for ACD}
 \protect\hypertarget{likelihood-function-for-acd}{}
 Let us consider an ACD Model. The main assumption of the ACD model is
-that the standardized durations
+that the standardized durations,
 
-\(\epsilon_i=\frac{x_i}{\psi_i}\)
+\(\epsilon_i=\frac{x_i}{\psi_i}\) ,
 
-are iid with \(E(\epsilon_i)=1\)
+are iid with \(E(\epsilon_i)=1\).
 
 Let \(f_{\epsilon}\) be the density of \(\epsilon\). Then:
 
-\(f(x_i|x_{i-1},\theta)=\frac{1}{\psi_i}f_{\epsilon}\)
+\(f(x_i|x_{i-1},\theta)=\frac{1}{\psi_i}f_{\epsilon}\).
 
 The log-likelihood function is given by
 
-\(L(\theta|x_n)=\sum_{i=1}^n[-\log(\psi_i)+f_{\epsilon}]\)\\
+\(L(\theta|x_n)=\sum_{i=1}^n[-\log(\psi_i)+f_{\epsilon}]\).
 \end{frame}
 
 \begin{frame}{Likelihood Function for ACD (Cont..)}
@@ -464,27 +468,27 @@ The log-likelihood function is given by
 If we assume that the error terms follow an exponential distribution
 then the likelihood function for the ACD model is:
 
-\(l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\psi_i}exp(\frac{-x_i}{\psi_i})\)
+\(l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\psi_i}e^{\frac{-x_i}{\psi_i}}\).
 
 Then the corresponding log likelihood is:
 
-\(L(\theta|x_n)=\sum_{i=1}^n-\log(\psi_i)-(\frac{x_i}{\psi_i})\)
+\(L(\theta|x_n)=\sum_{i=1}^n-\log(\psi_i)-(\frac{x_i}{\psi_i})\);
 
-\(L(\theta|x_n)=-\sum_{i=1}^n[\log(\psi_i)+(\frac{x_i}{\psi_i})]\)
+\(L(\theta|x_n)=-\sum_{i=1}^n[\log(\psi_i)+(\frac{x_i}{\psi_i})]\).
 \end{frame}
 
 \begin{frame}{Likelihood Function for Log-ACD}
 \protect\hypertarget{likelihood-function-for-log-acd}{}
-Similarly if we assume that the error follows an exponential
+Similarly, if we assume that the error follows an exponential
 distribution then the likelihood function for the Log-ACD model is:
 
-\(l(\theta|x_n)=\prod_{i=1}^n\frac{1}{\exp(\psi_i)}exp(\frac{-x_i}{\exp(\psi_i)})\)
+\(l(\theta|x_n)=\prod_{i=1}^n\frac{1}{e^{\psi_i}}e^{\frac{-x_i}{e^{\psi_i}}}\).
 
-Then the corresponding log likelihood is:
+The corresponding log likelihood is:
 
-\(L(\theta|x_n)=\sum_{i=1}^n-\psi_i-(\frac{x_i}{exp(\psi_i)})\)
+\(L(\theta|x_n)=\sum_{i=1}^n-\psi_i-(\frac{x_i}{e^{\psi_i}})\);
 
-\(L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{exp(\psi_i)})]\)
+\(L(\theta|x_n)=-\sum_{i=1}^n[\psi_i+(\frac{x_i}{e^{\psi_i}})]\).
 \end{frame}
 
 \begin{frame}{Other ways to estimate the parameters}
@@ -577,10 +581,18 @@ The variables Z2, Z3 and Z4 are computed as follows:
 \protect\hypertarget{data-preparation}{}
 \begin{itemize}
 \item
-  The data is available for each hour from the 11-01-2004 to 10-31-2013.
+  The data is available for each hour from 11-01-2004 to 10-31-2013.
 \item
-  Each year can be divided into two periods: (i) Windy Months (Nov-Mar)
-  (ii) Calm Months (Apr-Oct).
+  Each year can be divided into two periods:
+
+  \begin{enumerate}
+  [(i)]
+  \tightlist
+  \item
+    Windy Months (Nov-Mar)
+  \item
+    Calm Months (Apr-Oct).
+  \end{enumerate}
 \end{itemize}
 
 So modeling can also be done in two ways:
@@ -598,21 +610,17 @@ So modeling can also be done in two ways:
 \begin{frame}{Duration in the data}
 \protect\hypertarget{duration-in-the-data}{}
 \begin{itemize}
-\tightlist
 \item
   The durations are calculated based on some threshold for the wave
   heights and they are calculated in hours.
-\end{itemize}
 
-For example if we consider the threshold for wave heights as 2ft then
-the duration is calculated as follows:
+  For example if we consider the threshold for wave heights as 2ft then
+  the duration is calculated as follows:
 
-\(x_i = t_i - t_{i-1}\)
+  \(x_i = t_i - t_{i-1}\)
 
-where \(x_i\) is \(i^{th}\) hourly duration and \(t_i\) is \(i^{th}\)
-time point when the wave height reaches 2ft.
-
-\begin{itemize}
+  where \(x_i\) is \(i^{th}\) hourly duration and \(t_i\) is \(i^{th}\)
+  time point when the wave height reaches 2ft.
 \item
   So we can do this based on 3 different thresholds: 2ft, 3ft and 4ft.
 \item
@@ -700,18 +708,16 @@ time point when the wave height reaches 2ft.
 \protect\hypertarget{log-acd-model-with-exogenous-variables}{}
 We define the durations \(x_i\) with exogenous variables as:
 
-\(x_i = e^{\psi_i} \epsilon_i\)
+\(x_i = e^{\psi_i} \epsilon_i\) ;
 
-where \(\epsilon_i ~\) i.i.d with some density.
+where \(\epsilon_i\) are i.i.d with some density, and
 
-and
+\(\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{i,j}\),
 
-\(\psi_i = \omega + \sum_{j=0}^m \alpha_j ln x_{i-j} + \sum_{j=0}^q \beta_j \psi_{i-j}+\sum_{j=1}^r\delta_jz_{i,j}\)
-
-Where \(z_{i,j}\) are the exogenous variables.
+where \(z_{i,j}\) are the exogenous variables.
 
 The exogenous variables used for modeling are
-\(wind speed square, z2, z3, z4\).
+\textit{wind speed square},\(Z2, Z3, Z4\).
 
 The missing data in the exogenous variables were backfilled.
 \end{frame}
